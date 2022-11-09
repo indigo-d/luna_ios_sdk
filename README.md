@@ -61,12 +61,9 @@ You just need to `start` the Luna Gateway, that's it!
 ```swift
 import LunaSDK
 
-var lunaGateway: LunaGateway
+let lunaGateway = Luna.gateway()
 
 func startLunaGateway() {
-  let mqttHost = "router-prod.lunanets.net" // default router address
-  let configuration = LunaConfiguration(mqttHost: mqttHost)
-  lunaGateway = Luna.gateway(configuration: configuration)
   lunaGateway.start()
 }
 
