@@ -38,7 +38,7 @@ Run ```pod install``` so that CocoaPods fetches and links Luna SDK with your pro
 
 #### Project settings
 
-Luna SDK requires the **location** [Background Mode](https://developer.apple.com/documentation/xcode/configuring-background-execution-modes) to work properly. It can be configured in the Xcode project (Signing & Capabilities -> + Capability), or added manually to the project **.plist** file:
+Luna SDK requires the **Location updates** [Background Mode](https://developer.apple.com/documentation/xcode/configuring-background-execution-modes) to work properly. It can be configured in the Xcode project (Signing & Capabilities -> + Capability), or added manually to the project .plist file:
 ```
 <key>UIBackgroundModes</key>
 <array>
@@ -55,7 +55,11 @@ let locationManager = CLLocationManager()
 locationManager.requestAlwaysAuthorization()
 ```
 
-Remember to add `NSLocationAlwaysAndWhenInUseUsageDescription` key with explanation why the app is using "Always" loction permission to your project Info -> Custom iOS Target Properties, e.g. "The app is using Always location for iBeacon scanning".
+Remember to add:
+- `NSLocationAlwaysAndWhenInUseUsageDescription` 
+- `NSLocationWhenInUseUsageDescription`
+
+property list keys to the Xcode project (Info -> Custom iOS Target Properties), with an explanation of why the app is accessing the location, e.g. "The app is using Always location for iBeacon scanning". See [Apple docs](https://developer.apple.com/documentation/bundleresources/information_property_list/protected_resources) for more details about accessing the protected sources.
 
 ## Usage
 
